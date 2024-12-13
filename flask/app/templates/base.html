@@ -1,0 +1,172 @@
+<!-- Written by Phicharaya Khotmani -->
+<!-- 650510631 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>NoVex</title>
+
+        <link rel="icon" href="{{ url_for('static', filename='img/Novel_Vortex-icon.png')}}" type="image/png">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+        
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    </head>
+
+
+    <body>
+
+        <nav class="navbar" >
+
+            <div class="container">
+
+                <div class="header">
+
+                    <div>
+
+                        <div>
+                            <a href="{{ url_for('home_page') }}" class="logo" style="text-decoration: none;">
+                                <img src="{{ url_for('static', filename='img/book.png') }}" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                Novel <br> Vortex
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        {% if not current_user.is_authenticated %}
+
+                            <a href="{{ url_for('search') }}" style="text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="search-icon">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                </svg>
+                            </a>
+        
+                            <a href="{{ url_for('myFavorite') }}" style="text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" id="shelf-icon">
+                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                                </svg>
+                            </a>
+        
+                            <a href="{{ url_for('writer_manage') }}" id="writer" style="text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16" id="write-icon">
+                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
+                                </svg>
+                            </a>
+        
+                            
+                            <a href="{{ url_for('login_page') }}"> เข้าสู่ระบบ / ลงทะเบียน </a>
+
+                        {% else %}
+
+                            <a href="{{ url_for('search') }}" style="text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="search-icon">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                </svg>
+                            </a>
+        
+                            <a href="{{ url_for('myFavorite') }}" style="text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" id="shelf-icon">
+                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                                </svg>
+                            </a>
+        
+                            <a href="{{ url_for('writer_manage') }}" id="writer" style="text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16" id="write-icon">
+                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
+                                </svg>
+                            </a>
+
+                            <a style="text-decoration: none;" class="user-img" onclick="toggleMenu()">
+                                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16" id="person-icon">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                                </svg>
+                            </a>
+
+                        {% endif %}
+
+                    </div>
+
+
+                </div>
+                
+            </div>
+            
+        </nav>
+
+        <diV class="container">
+
+            <div class="row">
+                <div class="col col-lg-2">
+                    <div class="sub-menu-wrap" id="subMenu">
+                        <div class="sub-menu">
+                            <div class="user-info">
+                                <img src="{{ current_user.image_url }}" id="profile-icon">
+                                <p> {{ current_user.username }} <br>
+                                    <label style="text-transform: none;"> {{ current_user.email }} </label>
+                                </p> 
+                            </div>
+        
+                            <hr>
+        
+                            <a class="sub-menu-link">
+                                <p>การตั้งค่า</p>
+                            </a>
+        
+                            <span class="sub-menu-link">
+                                <a href="{{ url_for('logout_page') }}">ออกจากระบบ</a>
+                            </span>
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </diV>
+
+        <nav style="background-color: white;" class="navbar-sub">
+
+            <div class="container" id="subbar">
+
+                <div class="genre">
+                    <a href="{{ url_for('home_page') }}" id="original" onclick="toggleGenre"> นิยาย </a>
+                    <a href="{{ url_for('fanfic_page') }}" id="fanfic" onclick="toggleGenre"> แฟนฟิค </a>
+                    <a href="{{ url_for('translated_page') }}" id="translated" onclick="toggleGenre"> นิยายแปล </a>
+                </div>
+                
+            </div>
+
+        </nav>
+
+        <script>
+            let genre = document.getElementById("original");
+
+            function toggleGenre() {
+                subMenu.classList.toggle("open-genre");
+            }
+        </script>
+
+        <script>
+            let subMenu = document.getElementById("subMenu");
+
+            function toggleMenu() {
+                subMenu.classList.toggle("open-menu");
+            }
+        </script>
+
+        <div class="fav"> {% block content %}{% endblock %}</div>
+        
+    </body>
+
+</html>

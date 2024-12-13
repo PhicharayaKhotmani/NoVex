@@ -1,0 +1,120 @@
+<!-- Written by Kullatida Puranaphan -->
+<!-- 650510655 -->
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/favpage.css') }}">
+
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>My Favorites</h2>
+
+    <div class="container" id="showEmpty">
+        <div class="row row-cols-1 row-cols-md-5 g-4" id="favCon">
+        </div>
+    </div>
+
+    <script>
+        function populate_cards(myFav_data) {
+            //console.log(myFav_data)
+            if (myFav_data.length ===0) return
+            let cardsHtml = "";
+          
+            // Loop through each contact data
+            for (const favorite of myFav_data) {
+              cardsHtml += create_card(favorite);
+            }
+          
+            // Add the generated cards to the container element
+            $("#favCon").append(cardsHtml);
+        }
+
+        function create_card(favorite) {
+            // Build the card HTML structure with contact information
+            let cardHtml = `
+            <div class="col">
+                <a href="/bookdesc/${favorite.book.id}">
+                <div class="card h-100">
+                    <img src="${favorite.book.image_url}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title" data-field="book_name">${favorite.book.name}</h5>
+                                <div class="author">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                        </svg>
+                                        <span class="card-text" data-field="writer_name">${favorite.writer_name}</span>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill remove-fav-btn" data-book-id="${favorite.id}" viewBox="0 0 16 16" id="heartJa">
+                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                                    </svg>
+                                </div>
+                        </div>
+                </div>
+            </a>
+            </div>`;
+          
+            return cardHtml;
+        }
+
+        function populate_empty(myFav_data) {
+            //console.log(myFav_data)
+            //if (myFav_data.length ===0) return
+            let emptyHtml = "";
+
+            emptyHtml = myFav_data.length === 0 ? `
+                <div class="container" id="con-empty">
+                    <div class="isEmpty">
+                        <div class="toCen">
+                            <p>You haven't picked a favorite yet.<br>
+                            Why not browse and see what catches your eye?</p>
+                        </div>
+                    </div>
+                </div>
+
+            ` : "";
+
+            $("#showEmpty").append(emptyHtml);
+        }
+ 
+
+        $(document).ready(function () {
+            $.getJSON("myFavorite/books", populate_cards);
+            $.getJSON("myFavorite/books", populate_empty);
+            $("#favCon").on("click", ".remove-fav-btn", function (e) {
+                const bookId = $(this).attr('data-book-id');
+                const bookName = $(this).closest(".card-body").find(".card-title").text(); // Get book name from the card
+                const authorName = $(this).closest(".card-body").find(".author span").text(); // Get author name from the card
+                //const cardToDelete = $(this).closest(".card");
+            
+                if (confirm("Delete " + bookName + " by " + authorName + "?")) {
+                  // User confirmed deletion
+                    var url = "myFavorite/remove_fav_book"
+                    var formData = { 'id': bookId };
+                    /*cardToDelete.fadeOut(function () {
+                        cardToDelete.remove(); // Remove after fade-out animation
+                    });*/
+                    $.post(url, formData, function () {
+                        $.getJSON("myFavorite/books", refresh_cards);
+                    });
+                } else {
+                    // User canceled deletion
+                    console.log("Deletion cancelled");
+                    return false; // Prevent default behavior (e.g., form submission)
+                }
+            });
+          });
+
+        function refresh_cards(myFav_data) {
+            $("#favCon").empty();
+            if (myFav_data.length ===0){
+                populate_empty(myFav_data)
+            }
+            populate_cards(myFav_data);
+            //setTimeout(() => window.location.reload(), 500);
+        }
+
+        
+    </script>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+/* written by Benyapa Borpol */
+/* 650510668 */
+/*for write page*/
+
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+:root {
+    --black: #45413E;
+    --light-01: #F9F9F9;
+    --light-02: #FFFFFF;
+    --brand-01: #DB7F67;
+    --brand-02: #F4CFC6;
+    --box-shadow: 0 .3rem 1rem rgba(67, 64, 64, 0.1);
+    --border: .2rem solid rgba(0, 0, 0, .1);
+    --outline: .1rem solid rgba(0, 0, 0, .1);
+    --outline-hover: .2rem solid var(--black);
+
+    --card-hover: 0px 4px 24px rgba(0, 0, 0, 0.15);
+    --card-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    --hover-timing: all 0.2s ease;
+    --nav-card-size: 240px;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.container {
+    padding-top: 10px !important;
+    background-color: white;
+    border: 1px blanchedalmond;
+    margin: auto;
+    padding: auto;
+    padding-bottom: 20px;
+}
+
+.text-box1 {
+    border: 1px solid var(--brand-01);
+    border-radius: 30px;
+    margin: 2px;
+    padding: 5px 20px 5px 20px;
+}
+
+.font-style1 {
+    margin: 1px 10px 1px 10px;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.font-style2 {
+    margin-right: 10px;
+    font-size: small;
+    font-weight: 400;
+    text-align: right;
+}
+
+.button1 {
+    margin: 3px;
+    padding: 3px 35px 3px 35px;
+    border: 1px solid var(--brand-02);
+    border-radius: 30px;
+    background-color: var(--brand-02);
+    font-size: large;
+}
+
+.button2 {
+    margin: 3px;
+    padding: 3px 20px 3px 20px;
+    border: 1px solid black; 
+    border-radius: 30px;
+    background-color: whitesmoke;
+    font-size: large;
+}
+
+.ql-editor {
+    resize: vertical;
+    min-height: 130px;
+}

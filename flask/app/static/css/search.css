@@ -1,0 +1,167 @@
+/* Written by Jiraphat Pruttipongdecha */
+/* 640510643 */
+:root {
+    --black: #45413E;
+    --light-01: #F9F9F9;
+    --light-02: #FFFFFF;
+    --brand-01: #DB7F67;
+    --brand-02: #F4CFC6;
+    --box-shadow: 0 .3rem 1rem rgba(67, 64, 64, 0.1);
+    --border: .2rem solid rgba(0, 0, 0, .1);
+    --outline: .1rem solid rgba(0, 0, 0, .1);
+    --outline-hover: .2rem solid var(--black);
+
+    --card-hover: 0px 4px 24px rgba(0, 0, 0, 0.15);
+    --card-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    --hover-timing: all 0.2s ease;
+    --nav-card-size: 240px;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    color: black;
+    font-family: 'Kanit';
+}
+
+.search-table{
+    padding: 1%;
+}
+
+.search-box{
+    background: #d4a5a5;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    border-radius: 30px;
+    margin: 1rem;
+
+}
+
+.search-box input:focus{
+    background: #FFC7C7;
+    box-shadow:none;
+}
+
+.search-list{
+    background: #FCE4E4;
+    border: 1px solid #ababab;
+    border-top: none;
+}
+
+#search_text{
+    font-family: 'Kanit';
+    background: #FFC7C7;
+    border-radius: 30px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    flex-grow: 1;
+}
+
+.search-button {
+    background: #FFF7F1;
+    border: 2px solid gray;
+    padding: 1%;
+    border-radius: 30px;
+    margin-left: 10px;
+}
+
+.select-input {
+    font-family: 'Kanit';
+    padding: 8px 16px; /* Adjust padding as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    border: 2px solid gray; /* Add border */
+    border-radius: 30px; /* Add border radius */
+    background-color: #FFF7F1; /* Set background color */
+    margin-left: 10px;
+}
+
+.select-option {
+    padding: 8px 16px; /* Adjust padding as needed */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.card {
+    width: 30%;
+    background-color: #EEE;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    margin-bottom: 0;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center; /* จัดเรียงให้อยู่ตรงกลาง */
+        min-width: 400px;
+
+}
+
+.searchtext {
+    display: flex;
+    align-items: center; /* จัดให้ตรงกลางแนวตั้ง */
+    background: #f4cfc692;
+    padding: 0.5rem 1rem;
+    justify-content: center;
+    border-radius: 64px;
+}
+
+.search-actions {
+    display: flex;
+    align-items: center; /* จัดให้ตรงกลางแนวตั้ง */
+}
+
+.select-input {
+    margin-left: 10px; /* ระยะห่างระหว่าง select และ button */
+    width: auto;
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.search-button {
+    margin-left: 10px; /* ระยะห่างระหว่าง select และ button */
+    width: auto;
+    padding: 8px 16px;
+    font-size: 14px;
+    
+}
+.select-input option {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.chaptertitle{
+    text-align: center;
+    font-size: 24px;
+}
+.chaptercontent{
+    font-size: 24px;
+    background: #ecb7b7;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    border-radius: 30px;
+    margin: 1rem;
+    text-align: center;
+    
+}

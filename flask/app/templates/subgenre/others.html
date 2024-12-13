@@ -1,0 +1,113 @@
+<!-- Written by Phicharaya Khotmani -->
+<!-- 650510631 -->
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/more_page.css') }}">
+
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+    
+    <div class="container book-contain">
+        <div class="title">
+            <label>อื่น ๆ</label>
+        </div>
+       <div class="row row-cols-1 row-cols-md-6">
+         {% for book in testbook %}
+         {% if (book.subgenre_id == 7) and (book.genre_id == 1) %}
+         <div class="col">
+             <a href="{{ url_for('book_description', book_id=book.id) }}" class="card-link">
+             <div class="card mb-3" style="width: 12rem;">
+             <img src="{{ book.image_url }}" class="card-img-top" style="max-height: 200px;" alt="{{ book.name }}">
+             <div class="card-body">
+                 <h5 class="card-title">{{ book.name }}</h5>
+                 <p class="card-text">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                     </svg>
+                     {{ book.member.username }}</p>
+                 <div class="d-flex justify-content-between align-items-center">
+                 <div class="btn-group">
+                     <!-- You can add buttons or links here for further actions -->
+                 </div>
+                 </div>
+             </div>
+             </div>
+         </a>
+         </div>
+       {%endif%}
+         {% endfor %}
+       </div>
+   </div>
+    <!-- <div class="container" id="showEmpty">
+
+        <div class="title">
+            <label>อื่น ๆ</label>
+        </div>
+        <div class="row row-cols-1 row-cols-md-6 g-4" id="favCon">
+        </div>
+        
+
+        <script>
+
+            function populate_cards(books_data, container_id, genre_id, subgenre_id) {
+
+                var books_obj = []; 
+
+                for (const i of books_data) {
+                    if (i['genre_id'] === genre_id && subgenre_id === 4)  {
+                        books_obj.push(i)
+                    }
+                }
+
+                if (books_obj.length === 0) return
+                let cardsHtml = "";
+
+                // Loop through each contact data
+                for (const book of books_data) {
+                    cardsHtml += create_card(book);
+                }
+
+                // Add the generated cards to the container element
+                $("#" + container_id).append(cardsHtml);
+                console.log(books_obj)
+            }
+
+            function create_card(book) {
+                // Build the card HTML structure with contact information
+                let cardHtml = `
+                
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="${book.image_url}" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title" data-field="book_name">${book.name}</h5>
+                                    <div class="author">
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                            </svg>
+                                            <span class="card-text" data-field="writer_name">${book.writer_name}</span>
+                                        </div>
+                                    </div>
+                            </div>
+                    </div>
+                </div>`;
+            
+                return cardHtml;
+            }
+
+
+            $(document).ready(function () {
+                $.getJSON("books", function(books_data) {
+                    populate_cards(books_data, "favCon", 1, 1);
+                    populate_cards(books_data, "favCon2", 1, 2);
+                    populate_cards(books_data, "favCon3", 1, 3);
+                    populate_cards(books_data, "favCon4", 1, 4);
+                });
+            });
+            
+        </script>
+    </div> -->
+
+{% endblock %}

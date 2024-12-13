@@ -1,0 +1,44 @@
+* {
+    font-family: 'Kanit';
+    color: black;
+}
+
+#chapter-container {
+    margin-top: 1rem;
+}
+
+.chapter-title {
+    text-align: center;
+    /* border: 1px solid black; */
+    margin-top: 1rem;
+}
+
+.chapter-title span {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+#content {
+    margin-top: 3rem;
+}
+
+#content-row {
+    background-color: white;
+    /* border: 1px solid black; */
+    box-shadow: var(--box-shadow);
+}
+
+.head-content {
+    padding: 3rem;
+    /* border: 1px solid black; */
+}
+
+.content {
+    /* border: 1px solid black; */
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.content p {
+    font-weight: lighter;
+}

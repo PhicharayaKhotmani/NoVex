@@ -1,0 +1,39 @@
+<!-- Written by Jiraphat Pruttipongdecha -->
+<!-- 640510643 -->
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+
+{% extends "base.html" %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        
+    <head>
+
+    <body>
+        <form method="post">
+
+            <div class="container search-table">
+    
+
+                            <div class="searchtext">
+                                <input type="text" name="search_term" id="search_text" placeholder="ลองพิมพ์อะไรสักอย่างสิ!"></input>
+
+                                <button class="search-button"type="submit">Submit</button>
+
+                                <select name="search_type" id="search_type" class="select-input">
+                                    <option value="book_name">Book Name</option>
+                                    <option value="genre">Genre</option>
+                                    <option value="member">Author</option>
+                                </select>
+                </div>
+            </div>
+            
+        </form>
+    </body>
+{% endblock %}

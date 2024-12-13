@@ -1,0 +1,79 @@
+/* written by Benyapa Borpol */
+/* 650510668 */
+/*for writer manage page and create book pop-up*/
+
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+:root {
+    --black: #45413E;
+    --light-01: #F9F9F9;
+    --light-02: #FFFFFF;
+    --brand-01: #DB7F67;
+    --brand-02: #F4CFC6;
+    --box-shadow: 0 .3rem 1rem rgba(100, 93, 93, 0.1);
+    --border: .2rem solid rgba(0, 0, 0, .1);
+    --outline: .1rem solid rgba(0, 0, 0, .1);
+    --outline-hover: .2rem solid var(--black);
+
+    --card-hover: 0px 4px 24px rgba(0, 0, 0, 0.15);
+    --card-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    --hover-timing: all 0.2s ease;
+    --nav-card-size: 240px;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+h2 {
+    margin: 2rem 10px 0px 5px; 
+    padding: 20px 5px 5px 5px; 
+    font-size: large (--black); 
+    display: flex;
+    justify-content: left;
+    font-weight: bold;
+    
+}
+
+.container {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem;
+    background-color: white;
+    border: 1px blanchedalmond;
+    margin: auto;
+}
+
+#books_table {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#uploadForm {
+    padding: 10px;
+    border: 1px solid var(--brand-01);
+    display: flexbox;
+    flex-wrap: wrap;
+}
+
+#chapter_table_wrapper {
+    margin-top: 30px; /* ปรับระยะของตารางกับฟอร์ม */
+}
+
+.upload-label {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+

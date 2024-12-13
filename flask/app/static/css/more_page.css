@@ -1,0 +1,16 @@
+/* Written by Phicharaya Khotmani */
+/* 650510631 */
+
+.title {
+    padding-top: 2rem;
+}
+
+.title label {
+    font-size: 1.5rem;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

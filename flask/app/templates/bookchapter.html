@@ -1,0 +1,45 @@
+<!-- Written by Jiraphat Pruttipongdecha -->
+<!-- 640510643 -->
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/book_chapter.css') }}">
+
+{% extends "base.html" %}
+
+{% block content %}
+        
+        <div class="container">
+
+            <div class="row" id="chapter-container">
+
+                <div class="chapter-title">
+                    <span class="ep">{{ chapter.episode }}</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="container" id="content">
+
+            <div class="row" id="content-row">
+
+                <div class="head-content">
+
+                    <div class="row" style="text-align: center; font-size: 1.5rem;">
+                        <div>
+                            <span class="chap-title">{{ chapter.title }}</span>
+                        </div>
+                    </div>
+
+                </div>
+                                    
+                <div class="content">      
+                    <p style="margin: 2rem;"> {{ chapter.content }} </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+{% endblock %}

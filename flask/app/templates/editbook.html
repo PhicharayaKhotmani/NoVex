@@ -1,0 +1,83 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> My Writing </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <!-- Bootstrap Table -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css">
+    <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
+
+    <!-- our own css -->
+    <link rel="stylesheet" href="/static/css/writermanage.css">
+    <link rel="icon" type="image/png" href="static/img/Novel_Vortex-icon.png">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    
+</head>
+
+<body>
+    <div id="uploadForm">
+        {% for data in data_book %}
+            <h2>สร้างหรือแก้ไขงานเขียน</h2>
+            <form id="uploadForm" action="/addbook" enctype="multipart/form-i" method="POST">
+                <!-- กรอบแสดงผลรูปอยู่ด้านบนสุด -->
+                <div class="d-flex justify-content-center" style="margin-top: 30px; text-align: center;">
+                    <div class="col-md-4" style="text-align: center;">
+                        <img id="previewImage" src="" style="width: 300px; height: 300px; border: 1px solid wheat;">
+                    </div>
+                </div>
+                <!-- พื้นที่สำหรับกรอก URL ของรูปภาพ -->
+                <div class="col-md-12" style="margin-top: 30px;">
+                    <div class="col-md-4 offset-md-4">
+                        <label for="imageUrl" class="form-label">อัปโหลดรูป (URL):</label>
+                        <input type="text" class="form-control" id="imageUrl" name="imageUrl" value="{{ data.image_url }}"
+                            placeholder="ระบุ URL ของรูปภาพ" required>
+                    </div>
+                </div>
+                <input type="hidden" id="id" name="id" value="{{ current_user.id }}">
+                <div class="form-group">
+                    <label for="name">ชื่อหนังสือ:</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ data.name }}" placeholder="กรอกชื่อตอน">
+                </div>
+                <div class="form-group">
+                    <label for="genre-select" class="font-style1">ประเภทนิยาย:</label>
+                    <select class="form-control" id="genre-select" name="genre" required disabled>
+                        <option value="">--ประเภทนิยาย--</option>
+                        <option value="1" {% if data.genre_id == 1 %} selected {% endif %}>นิยายออริจินัล</option>
+                        <option value="2" {% if data.genre_id == 2 %} selected {% endif %}>แฟนฟิคชัน</option>
+                        <option value="3" {% if data.genre_id == 3 %} selected {% endif %}>นิยายแปล</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="subgenre" class="font-style1">หมวดหมู่รอง:</label>
+                    <select class="form-control" id="subgenre" name="subgenre" required disabled>
+                        <option value="">--หมวดหมู่รอง--</option>
+                        <option value="4" {% if data.subgenre_id == 4 %} selected {% endif %}>รักโรแมนติก</option>
+                        <option value="5" {% if data.subgenre_id == 5 %} selected {% endif %}>แฟนตาซี</option>
+                        <option value="6" {% if data.subgenre_id == 6 %} selected {% endif %}>ถนนสีรุ้ง</option>
+                        <option value="7" {% if data.subgenre_id == 7 %} selected {% endif %}>สยองขวัญ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">คำโปรยดึงนักอ่าน:</label>
+                    <textarea class="form-control" id="description" name="description" 
+                        rows="3">{{ data.description }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" 
+                    href="/edit_book">บันทึก</button>
+                <button type="button" id="cancelBtn" class="btn btn-secondary" 
+                    onclick="window.location.href='/writermanage'">ยกเลิก</button>
+            </form>
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>

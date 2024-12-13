@@ -1,0 +1,363 @@
+/* Written by Phicharaya Khotmani */
+/* 650510631 */
+
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+:root {
+  --black: #45413E;
+  --light-01: #F9F9F9;
+  --light-02: #FFFFFF;
+  --brand-01: #DB7F67;
+  --brand-02: #F4CFC6;
+  --box-shadow: 0 .3rem 1rem rgba(67, 64, 64, 0.1);
+  --border: .2rem solid rgba(0, 0, 0, .1);
+  --outline: .1rem solid rgba(0, 0, 0, .1);
+  --outline-hover: .2rem solid var(--black);
+
+  --card-hover: 0px 4px 24px rgba(0, 0, 0, 0.15);
+  --card-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  --hover-timing: all 0.2s ease;
+  --nav-card-size: 240px;
+
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none; border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.notification {
+    margin-top: rem !important;
+    font-size: 0.7rem !important;
+    text-align: center !important;
+    justify-content: center !important;
+}
+
+.form {
+    top: 6rem;
+    position: absolute;
+    max-width: 450px;
+    max-height: 100rem;
+    width: 100%;
+    padding: 30px;
+    border-radius: 30px;
+    background: #fff;
+}
+
+.form.signup {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.forms.show-signup .form.signup {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.forms.show-signup .form.login {
+    opacity: 0;
+    pointer-events: none;
+}
+
+header {
+    font-size: 28px;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+}
+
+form {
+    margin-top: 30px;
+}
+
+.topic {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.form .field {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+
+.field input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 10px;
+}
+
+.field button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 30px;
+}
+
+.field input {
+    outline: none;
+    padding: 0 15px;
+    border: 1px solid#CACACA;
+}
+
+.field input:focus {
+    border-bottom-width: 2px !important;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#eye-sign {
+    top: 100%;
+}
+
+.field button{
+    color: black;
+    background-color: var(--brand-02);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.form-link{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.form-link span,
+.form-link a{
+    font-size: 14px;
+    font-weight: 400;
+    color: #232836;
+}
+
+.form a{
+    color: #0C359E;
+    text-decoration: none;
+}
+
+.form-content a:hover{
+    text-decoration: underline;
+}
+
+.line{
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin: 36px 0;
+    background-color: black;
+}
+
+.line::before{
+    content: 'or';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: black;
+    padding: 0 10px;
+    text-transform: lowercase;
+    font-size: 1.2rem;
+}
+
+
+/* Media Zone */
+.media-options a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a.facebook{
+    color: #fff;
+    background-color: #4267b2;
+}
+
+a.facebook #facebook-icon{
+    height: 28px;
+    width: 28px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a.google #google-icon{
+  height: 28px;
+  width: 28px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+#facebook-icon,
+#google-icon{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+
+a.google{
+    border: 1px solid black;
+
+}
+
+a.google span{
+    opacity: 0.6;
+    color: black;
+}
+
+@media (max-width: 400px) {
+    .form{
+        padding: 20px 10px;
+    }
+    
+}
+
+
+/* media queries */
+
+@media (max-width: 992px) {
+
+    html {
+        font-size: 90%;
+    }
+
+    .header {
+        padding: 100%;
+    }
+
+    #eye-sign {
+        top: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    html {
+        font-size: 80%;
+    }
+
+    .header {
+        padding: auto;
+    }
+}
+
+@media (max-width: 450px) {
+
+    html {
+        font-size: 70%;
+    }
+
+    .header {
+        padding: auto;
+    }
+
+    .form {
+        top: 6.5rem;
+        max-height: auto;
+        width: 80%;
+        /* right: 3rem; */
+    }
+
+    #eye-sign {
+        top: 85%;
+    }
+
+}
+
+@media (max-width: 320px) {
+
+    #facebook-icon, #google-icon {
+        display: none !important;
+    }
+
+    html {
+        font-size: 70%;
+    }
+
+    header {
+        font-size: 2rem;
+    }
+
+    .header {
+        padding: auto;
+    }
+
+    .form {
+        top: 7rem;
+        max-height: auto;
+        width: 80%;
+        /* left: .5rem; */
+    }
+
+    .eye-icon {
+        top: 43%;
+    }
+
+    .form .field {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        margin-top: 10px;
+        border-radius: 30px;
+    }
+    
+    .field input {
+        height: 80%;
+        width: 100%;
+        /* border: none; */
+        font-size: 1rem;
+        font-weight: 400;
+        border-radius: 10px;
+    }
+
+    .field button {
+        height: 80%;
+        width: 100%;
+        border: none;
+        font-size: 16px;
+        font-weight: 400;
+        border-radius: 30px;
+    }
+}

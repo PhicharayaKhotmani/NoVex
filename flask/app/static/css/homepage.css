@@ -1,0 +1,391 @@
+/* Written by Phicharaya Khotmani */
+/* 650510631 */
+
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+:root {
+    --black: #45413E;
+    --light-01: #F9F9F9;
+    --light-02: #FFFFFF;
+    --brand-01: #DB7F67;
+    --brand-02: #F4CFC6;
+    --box-shadow: 0 .3rem 1rem rgba(67, 64, 64, 0.1);
+    --border: .2rem solid rgba(0, 0, 0, .1);
+    --outline: .1rem solid rgba(0, 0, 0, .1);
+    --outline-hover: .2rem solid var(--black);
+
+    --card-hover: 0px 4px 24px rgba(0, 0, 0, 0.15);
+    --card-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    --hover-timing: all 0.2s ease;
+    --nav-card-size: 240px;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: none; border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+}
+
+body {
+    background: #FFF7F1 !important;
+    /* height: 100dvh; */
+}
+
+.header {
+    position: fixed;
+    top: 0; left: 0; right: 0; 
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 6%;
+    background: #F4CFC6;
+    box-shadow: var(--black);
+}
+
+.header .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: 8px;
+    line-height: 100%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: black;
+}
+
+.header .logo:hover {
+    color: black;
+}
+
+.header a {
+    font-size: 1rem;
+    margin: 0 .3rem;
+    color: black;
+}
+
+.header a:hover {
+    color: var(--brand-01);
+}
+
+.header .icon svg:hover {
+    color: var(--brand-01);
+}
+
+#search-icon, #shelf-icon, #write-icon {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+    /* margin-top: 1rem; */
+}
+
+#person-icon {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
+
+
+
+/* subbar */
+.navbar-sub {
+    height: 3.5rem;
+    border-bottom: 1px solid #EEEDEB;
+    box-shadow: #EEEDEB;
+}
+
+.genre {
+    padding-top: 1rem;
+}
+
+.genre a {
+    padding-right: 2rem;
+    color: black;
+    font-size: 1rem;
+}
+
+.navbar-sub .genre a:hover, .navbar-sub .genre a:focus {
+    color: var(--brand-01);
+}
+
+
+.genre.open-genre {
+    font-weight: bolder;
+    color: var(--brand-01);
+}
+
+
+/* title */
+.title {
+    padding-top: 2rem;
+}
+
+.title label {
+    font-size: 1.5rem;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.more {
+    font-size: 1rem;
+    font-weight: lighter;
+    margin-left: auto;
+
+    text-align: left;
+    color: var(--brand-01);
+}
+
+
+
+
+/* card */
+.card-img-top{
+    width: 100%;
+    height: 200px;
+}
+
+
+
+.card-body {
+    max-height: 100%;
+    overflow-y: hidden;
+}
+
+.card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bolder;
+}
+
+.card-text {
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+.author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card:hover {
+    box-shadow: var(--box-shadow);
+    /* border-color: rgb(255, 31, 69); */
+}
+
+#heartJa:hover{
+    border-color: rgb(246, 151, 0);
+}
+
+
+
+/* footer */
+.footer {
+    color: black;
+    background-color: var(--brand-02) !important;
+    margin-top: 3rem;
+}
+
+.contact {
+    font-size: 1.5rem;
+    color: black;
+    text-align: center;
+}
+
+.bi-github {
+    color: black;
+    width: 3rem;
+    height: 3rem;
+    margin-top: 1rem;
+}
+
+
+
+/* Sub Menu bar */
+.sub-menu-wrap {
+    position: absolute;
+    left: 77%;
+    width: 300px;
+    max-height: 0px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.sub-menu-wrap.open-menu {
+    max-height: 400px;
+}
+
+.sub-menu {
+    background: var(--brand-02);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.user-info label {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.user-info img {
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+#profile-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.sub-menu hr {
+    border: 0;
+    height: 2px;
+    width: 100%;
+}
+
+.sub-menu-link {
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    margin: 12px 0;
+}
+
+.sub-menu-link p, a {
+    width: 100%;
+}
+
+.sub-menu-link a {
+    /* width: 100%; */
+    color: black !important;
+}
+
+.sub-menu-link:hover p, a {
+    font-weight: 600;
+}
+
+.sub-menu-link a:hover {
+    color: var(--brand-01) !important;
+}
+
+#genre {
+    background-color: white !important;
+    padding: 1rem;
+    background: none;
+    border-bottom: 10 solid black;
+}
+
+#genre-name a {
+    padding: 1rem;
+    color: black;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+
+
+
+/* media queries */
+
+@media (max-width: 992px) {
+
+    html {
+        font-size: 90%;
+    }
+
+    .header {
+        padding: auto;
+    }
+
+    .sub-menu-wrap {
+        position: absolute;
+        z-index: 1000;
+        /* top: 100%; */
+        left: 65%;
+        width: 300px;
+        /* max-height: 0px; */
+        overflow: hidden;
+        /* transition: max-height 0.5s; */
+        /* border-radius: 30px; */
+    }
+}
+
+@media (max-width: 780px) {
+
+    html {
+        font-size: 80%;
+    }
+
+    .header {
+        padding: auto;
+    }
+}
+
+@media (max-width: 600px) {
+
+    #search-icon, #shelf-icon, #write-icon {
+        width: 1rem !important;
+        height: 1rem !important;
+    }
+
+    #person-icon {
+        width: 1.2rem !important;
+        height: 1.2rem !important;
+    }
+
+    .header .logo {
+        font-size: 1rem;
+    }
+
+    .header a {
+        font-size: 0.8rem;
+        margin: 0 .1rem;
+        color: black;
+    }
+
+    html {
+        font-size: 50%;
+    }
+
+    .header {
+        padding: auto;
+    }
+
+    .sub-menu-wrap {
+        position: absolute;
+        z-index: 1000;
+        top: 100%;
+        left: 35%;
+        width: 300px;
+        max-height: 0px;
+        overflow: hidden;
+        /* transition: max-height 0.5s; */
+        /* border-radius: 30px; */
+    }
+}

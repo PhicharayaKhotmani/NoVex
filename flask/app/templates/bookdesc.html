@@ -1,0 +1,151 @@
+<!-- Written by Jiraphat Pruttipongdecha -->
+<!-- 640510643 -->
+<!-- Written by Phicharaya Khotmani -->
+<!-- 650510631 -->
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bookdesc.css') }}">
+
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row" id="toppic">
+
+            <div class="col" id="books-img">
+                <img src="{{ book.image_url }}" alt="Book Image" style="height: 100%; width: 100%;">
+            </div>
+
+            <div class="col" id="books-des">
+
+                <div>
+                    <h1 id="book_name">{{ book.name }}</h1>
+                    <div id="auther">            
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 17 17">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                        </svg><label> {{ book.member.username }}</label>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="description">
+                        <title>{{ book.name }} Description</title>
+                        <p>Description: {{ book.description }}</p>
+                    </div>
+                </div>
+                
+                
+                <div class="line"></div>
+                
+                    <div class="col">
+
+                        <div class="show-genre">
+                            <label>{{ book.genre.name }}</label>   
+                            <div>
+                                <!--Written by Kullatida Puranaphan 650510655-->
+                            {% if favorite %}
+                                
+                                    <button id="remove-from-favorites-btn" type="button"  data-book-id={{ favorite.id }}>
+                                        <svg id="heartIcon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                                        </svg>
+                                    </button>
+                            {% else %}
+                              
+                                    <button id="add-to-favorites-btn" type="button"  data-book-id={{ book.id }}>
+                                        <svg id="heartIcon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                                        </svg>
+                                    </button>
+                            {% endif %}
+                                <button class="read-now">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                    </svg>
+                            {% if chapters %}
+                                    {% for chapter in chapters %}
+                                        <a href="{{ url_for('chapter_content', chapter_id=chapter.id) }}" style="text-decoration: none; color: black;">อ่านเลย</a>
+                                    {% endfor %}
+                                    {% else %}
+                                        <p>ไม่มีตอน</p>
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>                           
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container" id="chapter">
+
+        <div class="row" id="chap-row">
+
+            <thead id="column-name">
+
+                <th>
+                    <label>Chapters ({{ chapters.length }})</label>
+                </th>
+                
+                <div class="line-chap"></div>
+
+                    {% for chapter in chapters %}
+                        <div class="chapter">
+                            <span class="chapter-title">
+                                <span class="number-of-chap">
+                                    {{chapter}} 
+                                </span>
+                                <a href="{{ url_for('chapter_content', chapter_id=chapter.id) }}">{{ chapter.title }}</a>
+                            </span>
+                            <span class="chapter-created-at">{{ chapter.created_at.strftime('%Y-%m-%d') }}</span>
+                        </div> 
+                        <div class="subline-chap"></div>
+                    {% endfor %}
+
+            </thead>
+        </div>
+        
+    </div> 
+
+    <script>
+        //Written by Kullatida Puranaphan 650510655
+        $("#add-to-favorites-btn").click(function () {
+            console.log("click")
+            const bookId = $(this).attr('data-book-id');
+            $.ajax({
+                type: 'POST',
+                url: '/myFavorite/add_fav_book',
+                data: { 'id': bookId },
+                success: function(response) {
+                    // If the addition is successful, change the heart icon to filled
+                    document.getElementById("heartIcon").classList.add("fill");
+                    window.location.reload();
+                }
+            });
+        });
+
+        $('#remove-from-favorites-btn').click(function() {
+            console.log("click")
+            const favId = $(this).attr('data-book-id');
+            // Perform an AJAX request to remove from favorites
+            $.ajax({
+                type: 'POST',
+                url: '/myFavorite/remove_fav_book',
+                data: { 'id': favId },
+                success: function(response) {
+                    // If the removal is successful, change the heart icon to non-filled
+                    document.getElementById("heartIcon").classList.remove("fill");
+                    window.location.reload();
+                }
+            });
+        });
+     
+    </script>
+
+{% endblock %}
+
+

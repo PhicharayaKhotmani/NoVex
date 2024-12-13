@@ -1,0 +1,102 @@
+/* Written by Kullatida Puranaphan */
+/* 650510655 */
+
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+/* Kullatida Puranaphan 650510655 */
+.fav h2{
+    /* justify-content: center; */
+    text-align: center;
+    font-style: normal;
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: black;
+}
+
+.card-img-top{
+    width: 100%;
+    height: 200px;
+}
+
+.col{
+    max-height: 300px !important;
+  
+}
+
+.card-body{
+    max-height: 100%;
+    overflow-y: hidden;
+    
+}
+
+.card-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+
+}
+
+
+.card-text{
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+#heartJa{
+    /* align-items: end; */
+    width: 20;
+    height: 20;
+    color: rgb(255, 48, 82);
+    /* margin-left: 40px; */
+}
+
+.author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+    /* border-color: rgb(255, 31, 69); */
+}
+
+#heartJa:hover{
+    border-color: rgb(246, 151, 0);
+}
+
+.isEmpty{
+    display: flex;
+    flex-direction: column;
+    width: 48.5rem;
+    height: 7.875rem;
+    border-radius: 3.125rem;
+    background: #ffd1d1b0;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.isEmpty p{
+    padding-top: 1%;
+    color: #000 !important;
+    text-align: center;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+}
+
+#con-empty.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}

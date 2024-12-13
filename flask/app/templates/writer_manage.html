@@ -1,0 +1,132 @@
+<!-- written by Bneyapa Borpol -->
+<!-- 650510668 -->
+<!-- หน้ารวมสำหรับนิยายทั้งหมดที่สร้างไว้ -->
+<!-- {{ data }} -->
+
+
+<!-- Bootstrap Table -->
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css">
+<script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
+
+
+{% extends 'base.html'%}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="col-md-12" style="display:flex;">
+            <div class="col-md-6 d-flex-end align-self-centerd-flex-end align-self-centerd-flex-end align-self-center">
+                <h2>งานเขียนของฉัน</h2></div>
+        <div class="col-md-4 d-flex-end align-self-center" style="display:flex; justify-content: center; ">
+            <button id="createbook" class="btn btn-primary mb-3">สร้างงานเขียน</button>
+        </div>
+    </div>
+        <div id="uploadForm" style="display: none;">
+            <h2>สร้างหรือแก้ไขงานเขียน</h2>
+            <form id="uploadForm" action="/addbook" enctype="multipart/form-data" , method="POST">
+                <!-- กรอบแสดงผลรูปอยู่ด้านบนสุด -->
+                <div class="d-flex justify-content-center" style="margin-top: 30px; text-align: center;">
+                    <div class="col-md-4" style="text-align: center;">
+                        <img id="previewImage" src="" style="width: 300px; height: 300px; border: 1px solid wheat;">
+                    </div>
+                </div>
+                <!-- พื้นที่สำหรับกรอก URL ของรูปภาพ   -->
+                <div class="col-md-12" style="margin-top: 30px;">
+                    <div class="col-md-4 offset-md-4">
+                        <label for="imageUrl" class="form-label">อัปโหลดรูป (URL):</label>
+                        <input type="text" class="form-control" id="imageUrl" name="imageUrl"
+                            placeholder="ระบุ URL ของรูปภาพ" required>
+                    </div>
+                </div>
+                
+
+                <input type="hidden" id="id" name="id" value="{{ current_user.id }}">
+                <div class="form-group">
+                    <label for="name">ชื่อหนังสือ:</label>
+                    <input type="text" class="form-control" id="name" name="name" 
+                    placeholder="กรอกชื่อนิยาย" required>
+                </div>
+                <div class="form-group">
+                    <label for="genre" class="font-style1">ประเภทนิยาย:</label>
+                    <select class="text-box1" id="genre" name="genre" required>
+                        <option value="">--ประเภทนิยาย--</option>
+                        <option value="1">นิยายออริจินัล</option>
+                        <option value="2">แฟนฟิคชัน</option>
+                        <option value="3">นิยายแปล</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="subgenre" class="font-style1">หมวดหมู่รอง:</label>
+                    <select class="text-box1" id="subgenre" name="subgenre">
+                        <option value="">--หมวดหมู่รอง---</option>
+                        <option value="4">รักโรแมนติก</option>
+                        <option value="5">แฟนตาซี</option>
+                        <option value="6">ถนนสีรุ้ง</option>
+                        <option value="7">อื่น ๆ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">คำโปรยดึงนักอ่าน:</label>
+                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">บันทึก</button>
+                <button type="button" id="cancelBtn" class="btn btn-secondary"
+                    onclick="window.location.href='/writermanage'">ยกเลิก</button>
+            </form>
+        </div>
+        <div class="container">
+            <table id="books_table" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ชื่องานเขียน</th>
+                        <th>แก้ไขล่าสุด</th>
+                        <th>แก้ไข/ลบงานเขียน</th>
+                        <th>info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td> {{i.name}} </td>
+                        <td> {{i.updated_at[:10]}} </td>
+                        <td>
+                            <a href="{{ url_for('edit_book' , book_id=i.id )}}"><button type="button"
+                                    class="btn btn-primary editChapterBtn">แก้ไข</button></a>
+                            <a href="{{ url_for('writermanage_remove_book' , book_id=i.id )}}"><button type="button"
+                                    class="btn btn-danger deleteChapterBtn">ลบ</button></a>
+                        </td>
+                        <td><a href="{{ url_for('books_page' , book_id=i.id )}}"><button type="button"
+                            class="btn btn-danger deleteChapterBtn">info</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // เมื่อคลิกที่ปุ่ม "สร้างงานเขียน"
+            $("#createbook").click(function () {
+                // แสดงฟอร์มสร้างงานเขียน
+                $("#uploadForm").show();
+            });
+        });
+
+        // img เก็บไว้ที่ book.py
+        // const previewImage = document.getElementById('previewImage');
+        // const imageInput = document.getElementById('image');
+
+        // imageInput.addEventListener('change', function () {
+        //     if (this.files && this.files[0]) {
+        //         const reader = new FileReader();
+        //         reader.onload = function () {
+        //             previewImage.src = reader.result;
+        //             previewImage.style.display = 'block';
+        //         };
+        //         reader.readAsDataURL(this.files[0]);
+        //     }
+        // });
+    </script>
+{% endblock %}
